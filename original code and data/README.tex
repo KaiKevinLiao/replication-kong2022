@@ -1,0 +1,308 @@
+\documentclass[12pt,english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage{setspace}
+\usepackage[round,authoryear]{natbib}
+\onehalfspacing
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage[hidelinks]{hyperref}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+	\begin{center}
+		{\Large{}README}{\Large\par}
+		\par\end{center}
+	
+	\begin{center}
+		{\Large{}Multidimensional Auctions of Contracts:}\\
+		{\Large{}An Empirical Analysis}\\
+		{\Large{}Repository: openicpsr-154601}{\Large\par}
+		\par\end{center}
+	
+	\begin{center}
+		Yunmi Kong \hspace*{1cm} Isabelle Perrigne \hspace*{1cm} Quang Vuong
+		\vspace{1cm}
+		\par\end{center}
+	
+	\subsection*{Data }
+	
+	\subsubsection*{Data availability}
+	
+	All data used in the paper are provided in the replication package
+	with the following exceptions: historical crude oil futures prices
+	from Quandl, historical crude oil options prices from the CME Group,
+	and oil production data from Drillinginfo require an account and/or
+	purchase from the respective data providers and are not provided here.
+	Replicators may obtain these data from the respective data providers.
+	Meanwhile, the replication package provides sufficient derived analysis
+	to enable replication of the paper using only what is provided in
+	the package.
+	
+	\subsubsection*{Data sources}
+	
+	$\circ$ Main data
+	\begin{itemize}
+		\item Louisiana Department of Natural Resources (DNR)
+		\begin{itemize}
+			\item Publicly available state government records
+			\begin{itemize}
+				\item \citet{dnrauc} Tract sheets of auction results. Accessed April 2017 at \\
+				http://reports.dnr.state.la.us/reports/rwservlet?SRMN9031B\_p
+				\item \citet{dnrlse} Lease information. Accessed September 2017 at\\
+				http://sonlite.dnr.state.la.us/sundown/cart\_prod/cart\_min\_qld1
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	$\circ$ Auxiliary data
+	\begin{itemize}
+		\item \citet{fredwti} %Federal Reserve Bank of St. Louis
+		\begin{itemize}
+			\item Publicly available federal reserve bank statistics
+			\begin{itemize}
+				\item Spot Crude Oil Price: West Texas Intermediate (WTISPLC). Accessed August 2019 at\\
+				https://fred.stlouisfed.org/series/WTISPLC 
+			\end{itemize}
+		\end{itemize}		
+		\item \citet{bea} %Bureau of Economic Analysis (BEA)
+		\begin{itemize}
+			\item Publicly available federal bureau statistics
+			\begin{itemize}
+				\item GDP implicit price deflator, in National Income and Product Accounts
+				table 1.1.9. Accessed October 2017 at\\
+				https://apps.bea.gov/iTable/iTable.cfm?reqid=19\&step=3\&isuri=1\&1921=sur vey\&1903=13\#reqid=19\&step=3\&isuri=1\&1921=survey\&1903=13
+			\end{itemize}
+		\end{itemize}
+		\item \citet{fredgs1} (FRB) %Board of Governors of the Federal Reserve System (US)
+		\begin{itemize}
+			\item Publicly available federal reserve bank statistics
+			\begin{itemize}
+				\item 1-Year Treasury Constant Maturity Rate, Percent, Monthly, Not Seasonally
+				Adjusted. Accessed March 2018 at\\
+				https://fred.stlouisfed.org/series/GS1
+			\end{itemize}
+		\end{itemize}	
+		\item \citet{quandl} (was Quandl at time of access, now Nasdaq Data Link)
+		\begin{itemize}
+			\item Data access requires an account (free). Accessed April 2019.\\
+			https://data.nasdaq.com
+			\begin{itemize}
+				\item Historical Crude Oil Futures Prices (Data product: Wiki Continuous
+				Futures, Frequency: daily, Nasdaq data link code: CHRIS/CME\_CL1 through
+				CHRIS/CME\_CL36), up to April 22, 2019. 
+			\end{itemize}
+		\end{itemize}
+		\item \citet{cme} %Chicago Mercantile Exchange (CME)
+		\begin{itemize}
+			\item Data must be purchased from the CME Group. Accessed January 2019.\\
+			https://www.cmegroup.com
+			\begin{itemize}
+				\item Crude oil options complete historical (product category: EOD, product
+				name: Crude Oil Options, symbol: LO, order type: Complete Historical).
+			\end{itemize}
+		\end{itemize}
+		\item \citet{drillinginfo} (was Drillinginfo at time of access, now Enverus)
+		\begin{itemize}
+			\item Data access requires an account. Accessed March 2018.\\
+			https://www.enverus.com
+			\begin{itemize}
+				\item Monthly production data for Louisiana wells, up to January 2018. Steps
+				for access: once logged in, apply Data Filters > Filter > State >
+				LA. Among the datasets, select ``Production''. Click ``Apply''.
+				Then go to the Exports tab, select ``Production'', then click ``Next''.
+				Select ``Production Headers.csv'' and ``Producing Entity Monthly
+				Production.csv'', click ``Next'', and complete the data export.
+			\end{itemize}
+		\end{itemize}
+	\end{itemize}
+	
+	\subsubsection*{Dataset list}
+	
+	\begin{tabular}{llll}
+		& \textbf{Data file} & \textbf{Provided} & \textbf{Source}\tabularnewline
+		{[}1{]} & data/maindata.dta & Yes & DNR, St. Louis Fed\tabularnewline
+		{[}2{]} & data/townships.dta & Yes & DNR\tabularnewline
+		{[}3{]} & data/gdpipdeflatorQ.dta & Yes & BEA\tabularnewline
+		{[}4{]} & data/treasury\_1y\_monthly.dta & Yes & FRB\tabularnewline
+		{[}5{]} & data/quandl/CHRIS-CME\_CL`m'.csv & No & Quandl\tabularnewline
+		{[}6{]} & data/cme/cme\_lo`date'.csv & No & CME\tabularnewline
+		{[}7{]} & data/Producing Entity Monthly Production.csv & No & Drillinginfo\tabularnewline
+		{[}8{]} & data/Production Headers.csv & No & Drillinginfo\tabularnewline
+		{[}9{]} & calculations/tractnum\_iv.dta & Yes & Derived from {[}1{]},{[}5{]},{[}6{]}\tabularnewline
+		{[}10{]} & calculations/twp\_idx\_pre.dta & Yes & Derived from {[}2{]},{[}7{]},{[}8{]}\tabularnewline
+		{[}11{]} & calculations/twp\_prod\_post.dta & Yes & Derived from {[}2{]},{[}7{]},{[}8{]}\tabularnewline
+		{[}12{]} & calculations/twp\_aveprod\_1987\_2006.dta & Yes & Derived from {[}2{]},{[}7{]},{[}8{]}\tabularnewline
+	\end{tabular}
+	
+	\smallskip
+	\begin{itemize}
+		\item Notes
+		\begin{itemize}
+			\item {[}5{]} and {[}6{]} are not needed for replication given {[}9{]}.
+			\item {[}7{]} and {[}8{]} are not needed for replication given {[}10{]},
+			{[}11{]}, {[}12{]}.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection*{Computational requirements}
+	
+	\subsubsection*{Software requirements}
+	\begin{itemize}
+		\item Matlab (code was run with Matlab Release 2020a)
+		\begin{itemize}
+			\item Curve Fitting Toolbox
+			\item Optimization Toolbox
+			\item Statistics and Machine Learning Toolbox
+		\end{itemize}
+		\item R 4.1.1
+		\begin{itemize}
+			\item quantmod (0.4.18)
+			\item There is only one R file; it includes installation of dependencies.
+			\item Note: R is used only in preparing data file {[}5{]} (see dataset list)
+			which is not provided. R is not needed when running the replication
+			with what is provided in this package. 
+		\end{itemize}
+		\item STATA (code was run with STATA SE 15.1)
+		\begin{itemize}
+			\item estout (as of 2020-02-03)
+			\item outreg2 (as of 2020-02-03)
+		\end{itemize}
+	\end{itemize}
+	
+	\subsubsection*{Memory and runtime requirements}
+	
+	The code was run on a 56-core Intel-based desktop with 512 GB of RAM,
+	2 TB of fast local storage. Some Matlab programs contain \texttt{parfor}
+	(parallel for-loop) commands, so the number of cores substantially
+	affects run times. Run times were as follows.
+	
+	\vspace{0.5cm}
+	
+	\noindent%
+	\begin{tabular}{lll}
+		\hline 
+		Program & Software & Time\tabularnewline
+		\hline 
+		A\_run\_stata\_code.do & Stata & 1 sec\tabularnewline
+		matlab/B\_heatmap3.m & Matlab & 33 sec\tabularnewline
+		C\_run\_stata\_code.do & Stata & 70 sec\tabularnewline
+		D\_run\_matlab\_code.m & Matlab & 3 hrs\tabularnewline
+		E\_run\_appendix\_matlab\_code.m & Matlab & 1 hr 8 min \tabularnewline
+		\hline 
+	\end{tabular}
+	
+	\subsection*{Description of programs/code}
+	\begin{itemize}
+		\item The file \texttt{0\_setup.do} installs necessary Stata packages and
+		sets a global macro for the Stata working directory.
+		\item Programs in \texttt{stata/prep} will prepare auxiliary variables,
+		merge them with the main data, and export data for use in Matlab programs.
+		The files \texttt{A\_run\_stata\_code.do} and \texttt{C\_run\_stata\_code.do}
+		will run them in the correct order.
+		\item Programs in \texttt{stata/tables} will generate Tables 1 and 3 in the main manuscript and Table A1 in the appendix. The file \texttt{C\_run\_stata\_code.do} will run these.
+		\item Among programs in \texttt{matlab}, file names starting in `E' will
+		estimate the model of the paper, file names starting in `C' will perform
+		counterfactual simulations, and file names starting with `figure'
+		or `table' will generate figures and/or tables. The file \texttt{D\_run\_matlab\_code.m}
+		will run them in the correct order to replicate the main manuscript. The file \texttt{B\_heatmap3.m}
+		is run separately as part of data preparation, per the Instructions
+		to replicators below.
+		\item The file \texttt{E\_run\_appendix\_matlab\_code.m} will run Matlab files in the correct order to replicate the appendix.
+	\end{itemize}
+	
+	\subsection*{Instructions to replicators}
+	
+	After downloading the replication folder in its entirety without changing,
+	moving, or renaming its contents, follow these steps in strict sequence:
+	\begin{enumerate}
+		\item Edit \texttt{0\_setup.do} to adjust the path to the downloaded replication
+		folder, and run it.
+		\item Run \texttt{A\_run\_stata\_code.do} in Stata.
+		\item Run \texttt{matlab/B\_heatmap3.m} in Matlab.
+		\item Run \texttt{C\_run\_stata\_code.do} in Stata.
+		\item Run \texttt{D\_run\_matlab\_code.m} in Matlab.
+		\item To replicate the appendix, run \texttt{E\_run\_appendix\_matlab\_code.m} in Matlab.
+	\end{enumerate}
+	\begin{itemize}
+		\item Details
+		\begin{itemize}
+			\item Order matters. The steps should be followed in sequence. If running
+			programs individually, they should be run in the order listed in the
+			master files above.
+			\item The steps above allow replication of the paper's analysis using only
+			what is provided in the package. To replicate starting with the data
+			files {[}5{]}-{[}8{]} (see dataset list) which are not provided, uncomment
+			and run the programs in lines 13-36 of \texttt{A\_run\_stata\_code.do}.
+			\item \texttt{calculations} is a folder in which intermediate calculations
+			will be deposited.
+			\item \texttt{output} is a folder in which figures and tables will be deposited.
+			\item The steps above were last run top to bottom in November 2021.
+		\end{itemize}
+	\end{itemize}
+	
+	\subsection*{List of tables and programs}
+	\subsubsection*{Main manuscript}
+	\begin{tabular}{lll}
+		\hline 
+		Figure/Table \# & Program & Output file (in `output' folder)\tabularnewline
+		\hline 
+		Table 1 & stata/tables/table1.do & Table1a.xml, Table1b.xml\tabularnewline
+		Table 2 & n/a; Table 2 is not empirical. & n/a\tabularnewline
+		Table 3 & stata/tables/table3.do & Table3.tex\tabularnewline
+		Table 4 & matlab/figure8\_table\_4\_5.m & Table4.csv\tabularnewline
+		Table 5 & matlab/figure8\_table\_4\_5.m & Table5.csv\tabularnewline
+		Figure 1 & matlab/figure1.m & figure1.eps\tabularnewline
+		Figure 2 & matlab/figure2.m & figure2.eps\tabularnewline
+		Figure 3 & matlab/E2\_Estimate\_gchoice.m & figure3.eps\tabularnewline
+		Figure 4 & matlab/figure4.m & figure4.eps\tabularnewline
+		Figure 5 & matlab/figure5\_6\_7.m & figure5.eps\tabularnewline
+		Figure 6 & matlab/figure5\_6\_7.m & figure6.eps\tabularnewline
+		Figure 7 & matlab/figure5\_6\_7.m & figure7.eps\tabularnewline
+		Figure 8 & matlab/figure8\_table\_4\_5.m & figure8.eps\tabularnewline
+		\hline 
+	\end{tabular}
+
+\subsubsection*{Appendix}
+
+	\begin{tabular}{lll}
+		\hline 
+		Figure/Table \# & Program & Output file (in `output' folder)\tabularnewline
+		\hline 
+		Table A1 & stata/tables/tableA1.do & TableA1.tex\tabularnewline
+		Table A2 & matlab/tableA2.m & TableA2.csv\tabularnewline
+		Table A3 & matlab/tableA3.m & TableA3.csv\tabularnewline
+		Table A4 & matlab/figureA8\_table\_A4\_A5.m & TableA4.csv\tabularnewline
+		Table A5 & matlab/figureA8\_table\_A4\_A5.m & TableA5.csv\tabularnewline
+		Figure A1 & matlab/figureA1toA4.m & figureA1.eps\tabularnewline
+		Figure A2 & matlab/figureA1toA4.m & figureA2.eps\tabularnewline
+		Figure A3 & matlab/figureA1toA4.m & figureA3.eps\tabularnewline
+		Figure A4 & matlab/figureA1toA4.m & figureA4.eps\tabularnewline
+		Figure A5 & matlab/C16\_Increase\_t\_compare\_am.m & figureA5.eps\tabularnewline
+		Figure A6 & matlab/C16\_Increase\_t\_compare\_am.m & figureA6.eps\tabularnewline
+		Figure A7 & matlab/C09\_Increase\_p\_compare.m & figureA7.eps\tabularnewline
+		Figure A8 & matlab/figureA8\_table\_A4\_A5.m & figureA8.eps\tabularnewline
+		Figure A9 & matlab/figureA9toA15.m & figureA9.eps\tabularnewline
+		Figure A10 & matlab/figureA9toA15.m & figureA10.eps\tabularnewline
+		Figure A11 & matlab/figureA9toA15.m & figureA11.eps\tabularnewline
+		Figure A12 & matlab/figureA9toA15.m & figureA12.eps\tabularnewline
+		Figure A13 & matlab/figureA9toA15.m & figureA13.eps\tabularnewline
+		Figure A14 & matlab/figureA9toA15.m & figureA14.eps\tabularnewline
+		Figure A15 & matlab/figureA9toA15.m & figureA15.eps\tabularnewline
+		Figure A16 & matlab/figureA16.m & figureA16.eps\tabularnewline		
+		\hline 
+	\end{tabular}
+
+%\bibliographystyle{aea}
+%\bibliography{Bibdatabase_KPV}
+
+\end{document}
