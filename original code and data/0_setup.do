@@ -6,4 +6,4 @@ ssc install outreg2
 
 /*** Replace the path below with appropriate path to Replication 
 folder ***/
-global rep "C:/Users/me/Replication"
+global rep "/Users/kailiao/replication-kong2022/original code and data"

@@ -1,0 +1,6 @@
+	(1)	(2)	(3)	(4)	(5)	(6)
+VARIABLES	mean	p10	p25	p50	p75	p90
+						
+numbids	2.273	2	2	2	2	3
+advertisedacreage	326.9	44	71.50	157	400	750
+						
